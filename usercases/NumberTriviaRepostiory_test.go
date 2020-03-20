@@ -51,3 +51,19 @@ func TestNumberTriviaRepository_Specific(t *testing.T){
 	})
 }
 
+func TestNumberTriviaRepository_Random(t *testing.T){
+	t.Run("random number", func(t *testing.T) {
+		repo := new(mockNumberTriviaRepository)
+
+		expected := &model.NumberTrivia{
+			Number: 1,
+			Text:   "some random test trivia",
+		}
+
+		result, err := repo.Random()
+		assert.NotNil(t,result)
+		assert.Equal(t, expected, result)
+		assert.Nil(t, err)
+	})
+}
+
